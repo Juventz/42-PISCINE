@@ -1,58 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_word.c                                        :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 22:01:35 by jaristil          #+#    #+#             */
-/*   Updated: 2022/09/30 13:01:20 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/30 10:56:54 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/30 14:32:54 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-int	ft_strlen(char *str)
+int	ft_check(char *str, char c, int pos)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (i < pos)
+	{
+		if (str[i] == c)
+			return (0);
 		i++;
-	return (i);
+	}
+	return (1);
 }
 	
-void	ft_last_word(char *str)
+void	ft_inter(char *str, char *str2)
 {
-	int	i;
+	int 	i;
+	int	j;
 
-	i = ft_strlen(str);
-	i--;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-		i--;
-	while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\0')
-		i--;
-	i++;
-	while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putchar(str[i]);
+		j = 0;
+		while (str2[j] != '\0')
+		{
+			if (str[i] == str2[j])
+			{
+				if (ft_check(str, str[i], i) == 1)
+				{
+					write(1, &str[i], 1);
+				}
+			}
+			j++;
+		}
 		i++;
 	}
-	ft_putchar('\n');
 }
-
+			
 int	main(int argc, char **argv)
 {
-	if (argc == 2)
-	{
-		ft_last_word(argv[1]);
-	}
-	else
-		ft_putchar('\n');
+	if (argc == 3)
+		ft_inter(argv[1], argv[2]);
+	write(1, "\n", 1);
 	return (0);
 }	
