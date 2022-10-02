@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/20 23:43:10 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/28 00:23:54 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_numbers(void)
+char	*ft_strupcase(char *str)
 {
-	int	a;
-	int	b;
+	int	i;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(1, &a, 1);
-		a++;
+		if (str[i] >= 97 && str[i] <= 122)
+		{
+			str[i] -= 32;
+		}
+		i++;
 	}
+	return (str);
 }
 
 int	main(void)
 {
-	int	a;
-
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	char str[] = "Cette fonction divise les int pointés par a et b. Le résultat de la division est stocké dans l’int pointé par a. Le résultat du reste de la division est stocké dans l’int pointé par b.";
+	printf("%s\n", ft_strupcase(str));
+	return (0);
 }
 

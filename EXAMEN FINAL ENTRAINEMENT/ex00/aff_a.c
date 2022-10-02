@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/10/02 12:41:42 by jaristil          #+#    #+#             */
+/*   Updated: 2022/10/02 12:44:40 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_numbers(void)
+void	aff_a(char *str)
 {
-	int	a;
-	int	b;
+	int	i;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(1, &a, 1);
-		a++;
+		write(1, "a\n", 2);
+		i++;
 	}
 }
 
-int	main(void)
+int	main(int argv, char **argc)
 {
-	int	a;
-
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	(void)argc;
+	(void)argv;
+	write(1, "a\n", 2);
+	return (0);
 }
-

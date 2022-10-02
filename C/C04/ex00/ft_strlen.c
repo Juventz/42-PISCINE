@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 22:43:29 by jaristil          #+#    #+#             */
-/*   Updated: 2022/09/28 22:47:37 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/25 15:39:23 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/25 21:37:27 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_swap(int *a, int *b)
+int	ft_strlen(char *str)
 {
-	int	c;
+	int	i;
 
-	c = *a;
-	a* = *b;
-	*b = c;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
+/*
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	
+	printf("%d\n", ft_strlen(argv[1]));
+}
+*/

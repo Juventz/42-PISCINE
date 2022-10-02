@@ -1,37 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/25 21:09:26 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/26 17:34:11 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_numbers(void)
+void	ft_putchar(char c)
 {
-	int	a;
-	int	b;
-
-	a = '0';
-	b = '9';
-	while (a <= b)
-	{
-		write(1, &a, 1);
-		a++;
-	}
+	write(1, &c, 1);
 }
 
+void	ft_putnbr(int nb)
+{
+	unsigned int	num;
+
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		num = -nb;
+	}
+	else
+		num = nb;
+	if (num > 9)
+	{
+		ft_putnbr(num / 10);
+		num %= 10;
+	}
+	ft_putchar(num + '0');
+}
+/*
 int	main(void)
 {
-	int	a;
+	int	nb;
 
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	nb = 42;
+	ft_putnbr(nb);
+	return (0);
 }
-
+*/

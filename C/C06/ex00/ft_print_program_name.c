@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 22:40:25 by jaristil          #+#    #+#             */
-/*   Updated: 2022/09/28 22:42:49 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/26 22:22:38 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/27 11:13:07 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+void	ft_putstr(char *str)
 {
 	int	i;
 
@@ -22,5 +22,12 @@ int	ft_strlen(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
-	return (i);
+}
+
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	ft_putstr(argv[0]);
+	write(1, "\n", 1);
+	return (0);
 }

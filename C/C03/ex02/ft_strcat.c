@@ -1,37 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/22 14:55:03 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/25 19:25:54 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_numbers(void)
+int	ft_strlen(char *str)
 {
-	int	a;
-	int	b;
+	int	i;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
-	{
-		write(1, &a, 1);
-		a++;
-	}
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(dest);
+	while (src[i] != '\0')
+	{
+		dest[i + len] = src[i];
+		i++;
+	}
+	dest[i + len] = '\0';
+	return (dest);
+}
+/*	
 int	main(void)
 {
-	int	a;
 
-	a = 0;
-	write(1, &a, 1);
-	a++;
+char dest[15] = "salut";
+char src[15] = " jules";
+printf("%s",ft_strcat(dest,src));
+	return(0);
 }
-
+*/

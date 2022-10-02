@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/20 10:53:04 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/22 21:01:44 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_numbers(void)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	a;
-	int	b;
+	unsigned int	i;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
+	i = 0;
+	while (src[i] != '\0' && i < n)
 	{
-		write(1, &a, 1);
-		a++;
+		dest[i] = src [i];
+		i++;
 	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
-
+/*
 int	main(void)
 {
-	int	a;
+	unsigned int n;
 
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	char dest[] = "Jules";
+	char src[] = "Juventz";
+	ft_strncpy(&dest, &src, n);
+	printf("%s\n", dest);
 }
-
+*/

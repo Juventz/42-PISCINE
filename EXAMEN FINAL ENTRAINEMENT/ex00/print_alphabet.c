@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   print_alphabet.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/10/02 12:50:32 by jaristil          #+#    #+#             */
+/*   Updated: 2022/10/02 13:00:15 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_numbers(void)
+void	print_alphabet(void)
 {
-	int	a;
-	int	b;
-
-	a = '0';
-	b = '9';
-	while (a <= b)
 	{
-		write(1, &a, 1);
-		a++;
+		write(1, "aBcDeFgHiJkLmNoPqRsTuVwXyZ\n", 27);
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	int	a;
-
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	(void)argc;
+	(void)argv;
+	write(1, "aBcDeFgHiJkLmNoPqRsTuVwXyZ\n", 27);
+	return (0);
 }
-

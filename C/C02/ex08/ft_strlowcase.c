@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/21 01:13:44 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/21 01:24:10 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_numbers(void)
+char	*ft_strlowcase(char *str)
 {
-	int	a;
-	int	b;
+	int	i;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(1, &a, 1);
-		a++;
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] += 32;
+		i++;
 	}
+	return (str);
 }
-
+/*
 int	main(void)
 {
-	int	a;
-
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	char str[] = "UGJgh";
+	printf("%s\n", ft_strlowcase(&str));
+	return (0);
 }
-
+*/

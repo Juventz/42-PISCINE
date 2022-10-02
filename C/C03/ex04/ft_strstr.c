@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/24 18:56:01 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/25 00:37:13 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 
-void	ft_print_numbers(void)
+char	*ft_strstr(char *str, char *to_find)
 {
-	int	a;
-	int	b;
+	int	i;
+	int	j;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
+	i = 0;
+	j = 0;
+	if (to_find[j] == '\0')
+		return (str);
+	while (str[i] != '\0')
 	{
-		write(1, &a, 1);
-		a++;
+		while (str[i + j] == to_find[j] && str[i + j] != '\0')
+			j++;
+		if (to_find[j] == '\0')
+			return (str + i);
+		i++;
+		j = 0;
 	}
+	return (0);
 }
-
+/*
 int	main(void)
 {
-	int	a;
+	char	str[30] = "beaten";
+	char	to_find[] = "eat";
 
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	printf("%s\n", ft_strstr(str, to_find));
 }
-
+*/

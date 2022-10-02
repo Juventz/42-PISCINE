@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 19:44:14 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/02 13:33:19 by jaristil         ###   ########.fr       */
+/*   Created: 2022/09/22 12:32:18 by jaristil          #+#    #+#             */
+/*   Updated: 2022/09/25 19:23:40 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_numbers(void)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	a;
-	int	b;
+	unsigned int	i;
 
-	a = '0';
-	b = '9';
-	while (a <= b)
+	i = 0;
+	while (s1[i] == s2[i] && (i < n) && s1[i] && s2[i])
 	{
-		write(1, &a, 1);
-		a++;
+		i++;
 	}
+	if (i == n)
+		return (0);
+	return (s1[i] - s2[i]);
 }
-
+/*
 int	main(void)
 {
-	int	a;
-
-	a = 0;
-	write(1, &a, 1);
-	a++;
+	char s1[] = "jkljjim";
+	char s2[] = "jkljjmn";
+	printf("%d\n", ft_strncmp(s1, s2, 3));
 }
-
+*/
