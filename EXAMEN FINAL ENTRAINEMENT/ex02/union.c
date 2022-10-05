@@ -6,46 +6,46 @@
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:44:28 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/05 15:50:36 by jaristil         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:37:56 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_union(char *find, char *str)
+void	ft_union(char *s1, char *s2)
 {
 	int	i;
 	int tab[200] = {0};
 
 	i = 0;
-	while (str[i] != '\0')
+	while (s2[i] != '\0')
 	{
-		tab[(int)str[i]] = 1;
+		tab[(int)s2[i]] = 1;
 		i++;
 	}
 	i = 0;
-	while (find[i] != '\0')
+	while (s1[i] != '\0')
 	{
-		tab[(int)find[i]] = 1;
+		tab[(int)s1[i]] = 1;
 		i++;
 	}
 	i = 0;
-	while (find[i] != '\0')
+	while (s1[i] != '\0')
 	{
-		if (tab[(int)find[i]] == 1)
+		if (tab[(int)s1[i]] == 1)
 		{
-			write(1,&find[i], 1);
-			tab[(int)find[i]] = 2;
+			write(1,&s1[i], 1);
+			tab[(int)s1[i]] = 2;
 		}
 		i++;
 	}
 	i = 0;
-	while (str[i] != '\0')
+	while (s2[i] != '\0')
 	{
-		if (tab[(int)str[i]] == 1)
+		if (tab[(int)s2[i]] == 1)
 		{
-			write(1, &str[i], 1);
-			tab[(int)str[i]] = 2;
+			write(1, &s2[i], 1);
+			tab[(int)s2[i]] = 2;
 		}
 		i++;
 	}
