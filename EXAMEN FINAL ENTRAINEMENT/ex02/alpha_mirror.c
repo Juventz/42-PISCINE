@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aff_a.c                                            :+:      :+:    :+:   */
+/*   alpha_mirror.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 12:41:42 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/03 15:40:58 by jaristil         ###   ########.fr       */
+/*   Created: 2022/10/05 19:02:41 by jaristil          #+#    #+#             */
+/*   Updated: 2022/10/05 19:15:20 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	alpha_mirror(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		c = 'z' - (c - 'a');
+	if (c >= 'A' && c <= 'Z')
+		c = 'Z' - (c - 'A');
+	write(1, &c, 1);
+}
 
 int	main(int argc, char **argv)
 {
 	int	i;
 
 	i = 0;
-	if (argc != 2)
+	if (argc == 2)
 	{
-		write(1, "a\n", 2);
-		return (0);                                                                                                                                                            
-	}
-	while (argv[1][i])
-	{
-		if (argv[1][i] == 'a')
+		while (argv[1][i])
 		{
-			write(1, "a\n", 2);
-			return (0);
+			alpha_mirror(argv[1][i]);
+			i++;
 		}
-		i++;
 	}
 	write(1, "\n", 1);
 	return (0);
 }
-/*
-Afficher a dans tout les cas hormi si 'a' n'appartient pas a str
-*/

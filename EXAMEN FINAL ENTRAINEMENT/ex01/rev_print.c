@@ -6,7 +6,7 @@
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 22:48:06 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/04 12:26:18 by jaristil         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:26:13 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_rev_print(char *str)
+void	ft_rev_print(char *str)
 {
 	int	i;
 
@@ -34,11 +34,12 @@ char	*ft_rev_print(char *str)
 		write(1, &str[i], 1);
 		i--;
 	}
-	return(str);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char str[] = "Tiffany";
-	ft_rev_print(str);
+	if (argc == 2)
+		ft_rev_print(argv[1]);
+	write(1, "\n", 1);
+	return (0);
 }
