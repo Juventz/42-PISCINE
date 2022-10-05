@@ -1,39 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aff_last_params.c                                  :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 13:09:55 by jaristil          #+#    #+#             */
-/*   Updated: 2022/10/04 11:47:29 by jaristil         ###   ########.fr       */
+/*   Created: 2022/10/05 13:14:20 by jaristil          #+#    #+#             */
+/*   Updated: 2022/10/05 13:37:41 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_inter(char *find, char *str)
 {
-	write(1, &c, 1);
+	int	i;
+	int	tab[200] = {0};
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		tab[(int)str[i]] = 1;
+		i++;
+	}
+	i = 0;
+	while (find[i] != '\0')
+	{
+		if (tab[(int)find[i]] == 1)
+		{
+			write(1, &find[i], 1);
+			tab[(int)find[i]] = 2;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-
-	j = argc - 1;
-	i = 0;
-	if (argc < 2)
-	{
-		write(1, "\n", 1);
-		return (0);
-	}
-	while (argv[j][i])
-	{
-		ft_putchar(argv[j][i]);
-		i++;
-	}
+	if (argc == 3)
+		ft_inter(argv[1], argv[2]);
 	write(1, "\n", 1);
 	return (0);
 }

@@ -1,59 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 10:56:54 by jaristil          #+#    #+#             */
-/*   Updated: 2022/09/30 14:32:54 by jaristil         ###   ########.fr       */
+/*   Created: 2022/10/04 17:19:10 by jaristil          #+#    #+#             */
+/*   Updated: 2022/10/04 18:07:03 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_check(char *str, char c, int pos)
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	sign;
+	int	result;
 
 	i = 0;
-	while (i < pos)
+	sign = 1;
+	result = 0;
+	while (str[i] != '\0' && ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32)))
+		i++;
+	if (str[i] == '-')
 	{
-		if (str[i] == c)
-			return (0);
+		sign *= -1;
 		i++;
 	}
-	return (1);
+	if (str[i] == '+')
+	{
+		sign *= 1;
+		i++;
+	}
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
+	{
+			result = result * 10 + (str[i] - 48);
+			i++;
+	}
+	return (result * sign);
 }
-	
-void	ft_inter(char *str, char *str2)
-{
-	int 	i;
-	int	j;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		j = 0;
-		while (str2[j] != '\0')
-		{
-			if (str[i] == str2[j])
-			{
-				if (ft_check(str, str[i], i) == 1)
-				{
-					write(1, &str[i], 1);
-				}
-			}
-			j++;
-		}
-		i++;
-	}
-}
-			
 int	main(int argc, char **argv)
 {
-	if (argc == 3)
-		ft_inter(argv[1], argv[2]);
-	write(1, "\n", 1);
+	(void)argc;
+	printf("%d\n", ft_atoi(argv[1]));
 	return (0);
 }	
